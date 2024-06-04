@@ -4,7 +4,7 @@
 
 - Use it from [here](https://www.npmjs.com/package/sequelize-typescript-migration-updated) by the name of `sequelize-typescript-migration`
 
-- Here is the [Github discussion](https://github.com/garsetayusuf/sequelize-typescript-migration-update/discussions), any ideas/improves are very welcome.
+- Here is the [Github discussion](https://github.com/garsetayusuf/sequelize-typescript-migration-updated/discussions), any ideas/improves are very welcome.
 
 #### Tutorial
 
