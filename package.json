@@ -1,6 +1,6 @@
 {
-  "name": "sequelize-typescript-migration-update",
-  "version": "2.0.0",
+  "name": "sequelize-typescript-migration-updated",
+  "version": "2.0.2",
   "description": "migration tool for sequelize & typescript users",
   "keywords": [
     "sequelize",
@@ -9,9 +9,9 @@
     "migration",
     "makemigration"
   ],
-  "homepage": "https://github.com/garsetayusuf/sequelize-typescript-migration-update",
+  "homepage": "https://github.com/garsetayusuf/sequelize-typescript-migration-updated",
   "bugs": {
-    "url": "https://github.com/garsetayusuf/sequelize-typescript-migration-update/issues",
+    "url": "https://github.com/garsetayusuf/sequelize-typescript-migration-updated/issues",
     "email": "garsetayusuf@gmail.com"
   },
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/garsetayusuf/sequelize-typescript-migration-update.git"
+    "url": "git+https://github.com/garsetayusuf/sequelize-typescript-migration-updated.git"
   },
   "author": "garsetayusuf@gmail.com",
   "license": "MIT",
