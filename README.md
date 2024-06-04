@@ -1,4 +1,4 @@
-# sequelize-typescript-migration-update
+# sequelize-typescript-migration-updated
 
 #### Idea: founded the best changes at each 27th fork from the main repository and merge them together.
 
