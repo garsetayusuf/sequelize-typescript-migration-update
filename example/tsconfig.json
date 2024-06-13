@@ -24,7 +24,7 @@
       "@src/*": ["src/*"]
     },
     "outDir": "dist",
-    "charset": "utf8"
+    "ignoreDeprecations": "5.0"
   },
   "exclude": ["node_modules", "dist"]
 }
