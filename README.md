@@ -2,22 +2,23 @@
 
 #### Idea: founded the best changes at each 27th fork from the main repository and merge them together.
 
-- Use it from [here](https://www.npmjs.com/package/sequelize-typescript-migration-updated) by the name of `sequelize-typescript-migration`
+- Use it from [here](https://www.npmjs.com/package/sequelize-typescript-migration-updated) by the name of `sequelize-typescript-migration-updated`
 
 - Here is the [Github discussion](https://github.com/garsetayusuf/sequelize-typescript-migration-updated/discussions), any ideas/improves are very welcome.
 
-#### Tutorial
+#### FIXING ISSUE
 
-[youtube video](https://www.youtube.com/embed/bBv75hssPKk)
-
-[![video](https://img.youtube.com/vi/bBv75hssPKk/0.jpg)](https://www.youtube.com/embed/bBv75hssPKk)
-
+- **Version 2.1.*** fixed issue of order problem when the migration file was created, _**now automatically detects when there is a relationship**_, no need to worry about changing the order of the model in sequelize.
 
 #### Installation
 
+- **NPM**
 ```js
 npm i sequelize-typescript-migration-updated
-// Or
+```
+
+- **YARN**
+```js
 yarn add sequelize-typescript-migration-updated
 ```
 
@@ -42,8 +43,8 @@ That issue is currently in the works.
 
 ### Compatibility
 
-- Use version `~2.0.0` for `sequelize@~6.0.0`
-- Use version `~1.0.0` for `sequelize@~4.0.0`
+- Use version `~2.*` for `sequelize@~6.0.0`
+- Use version `~1.*` for `sequelize@~4.0.0`
 
 ## Usage Example
 
@@ -261,15 +262,8 @@ If you change a model and re-run the backend there should be a new file under `d
 2) Migrate your database `sequelize db:migrate`
 3) Re-Serve the backend. You Should see 'No changes found'.
 4) Test the automatically created file's down function `sequelize db:migrate:undo`
-5) If there are any troubles, fix the auto-generated file (ordering!)
-6) Run `sequelize db:migrate:undo` and continue your amazing work
-
-## Documentation
-
-Will be ready soon!
+5) Run `sequelize db:migrate:undo` and continue your amazing work
 
 ## Contributors
 
 - [Garseta Yusuf](https://github.com/garsetayusuf)
-- [Anthony Luzquiños](https://github.com/anthonylzq)
-- [Alexandr Cherednichenko](https://github.com/alexandr2110pro)

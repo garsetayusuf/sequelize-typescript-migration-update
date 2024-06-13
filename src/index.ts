@@ -1,6 +1,6 @@
 import { existsSync } from "fs";
 import beautify from "js-beautify";
-import type { Model, ModelCtor } from "sequelize/types";
+import type { Model, ModelStatic } from "sequelize/types";
 import type { Sequelize } from "sequelize-typescript";
 
 import type { MigrationState } from "./constants";
@@ -8,8 +8,11 @@ import createMigrationTable from "./utils/createMigrationTable";
 import getDiffActionsFromTables from "./utils/getDiffActionsFromTables";
 import getLastMigrationState from "./utils/getLastMigrationState";
 import getMigration from "./utils/getMigration";
-import getTablesFromModels, { ReverseModelsOptions } from "./utils/getTablesFromModels";
+import getTablesFromModels, {
+  ReverseModelsOptions,
+} from "./utils/getTablesFromModels";
 import writeMigration from "./utils/writeMigration";
+import orderActions from "./utils/orderAction";
 
 export type IMigrationOptions = {
   /**
@@ -33,7 +36,7 @@ export type IMigrationOptions = {
   comment?: string;
 
   debug?: boolean;
-} & ReverseModelsOptions
+} & ReverseModelsOptions;
 
 export class SequelizeTypescriptMigration {
   /**
@@ -58,8 +61,10 @@ export class SequelizeTypescriptMigration {
     await sequelize.authenticate();
 
     const models: {
-      [key: string]: ModelCtor<Model>;
+      [key: string]: ModelStatic<Model>;
     } = sequelize.models;
+
+    console.log(models);
 
     const queryInterface = sequelize.getQueryInterface();
 
@@ -80,13 +85,16 @@ export class SequelizeTypescriptMigration {
       previousState.tables,
       currentState.tables
     );
+    const orderedUpActions = orderActions(upActions);
+
     const downActions = getDiffActionsFromTables(
       currentState.tables,
       previousState.tables
     );
+    const orderedDownActions = orderActions(downActions);
 
-    const migration = getMigration(upActions);
-    const tmp = getMigration(downActions);
+    const migration = getMigration(orderedUpActions);
+    const tmp = getMigration(orderedDownActions);
 
     migration.commandsDown = tmp.commandsUp;
 
@@ -132,8 +140,8 @@ export class SequelizeTypescriptMigration {
 
       console.log(`Use sequelize CLI:
   npx sequelize db:migrate --to ${info.revisionNumber}-${
-        info.info.name
-      }.js ${`--migrations-path=${options.outDir}`} `);
+    info.info.name
+  }.js ${`--migrations-path=${options.outDir}`} `);
 
       return await Promise.resolve({ msg: "success" });
     } catch (err) {
